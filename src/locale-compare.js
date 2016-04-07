@@ -18,7 +18,7 @@
 
       var charA = null, charB = null, index = 0;
       while (charA === charB && index < 100) {
-        charA = this.toString[index];
+        charA = this.toString()[index];
         charB = other[index];
         index++;
       }
