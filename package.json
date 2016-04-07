@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/kosmobot/locale-compare-polyfill/issues"
   },
-  "homepage": "https://github.com/kosmobot/locale-compare-polyfill#readme"
+  "homepage": "https://github.com/kosmobot/locale-compare-polyfill#readme",
+  "devDependencies": {
+    "mocha": "^2.4.5"
+  }
 }

@@ -1,3 +1,15 @@
+'use strict';
+
+var assert = require('assert');
+
+require('../src/locale-compare');
+
+describe('default', function() {
+  it('should order b after a', function() {
+    assert('b'.localeCompare('a') === 1);
+  });
+});
+
 // default
 //   ✓ should order b after a
 //   ✓ should order å before p

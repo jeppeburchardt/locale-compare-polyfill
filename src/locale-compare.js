@@ -11,7 +11,7 @@
 
     var original = String.prototype.localeCompare;
 
-    String.prototype.localeCompare = fuction(other, locale) {
+    String.prototype.localeCompare = function(other, locale) {
       if (!locale) { return original.apply(this, arguments); }
       var lang = locale.split('-')[0];
       var order = orders[lang];
