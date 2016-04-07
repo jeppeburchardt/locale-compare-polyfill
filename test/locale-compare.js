@@ -10,18 +10,15 @@ describe('default', function() {
   });
 });
 
-// default
-//   ✓ should order b after a
-//   ✓ should order å before p
-//   ✓ should order uppercase before lowercase
-//   ✓ should order array
-//
-// localeCompare da-DK
-//   ✓ should order å after p in danish
-//   ✓ should order å after p in danish
-//   ✓ should order array
-//
-// localeCompare de-DE
-//   ✓ should order ß efter S
-//   ✓ should order ß before t
-//   ✓ should order array
+describe('da-DK', function() {
+  it('should order ø after p', function() {
+    assert('ø'.localeCompare('p', 'da-DK') === 1);
+  });
+  it('should order an array', function() {
+    var unordered = ['ø', 'å', 'z', 'æ'];
+    var ordered = ['z', 'æ', 'ø', 'å'];
+    assert.deepStrictEqual(unordered.sort(function(a, b) {
+      return a.localeCompare(b, 'da-DK');
+    }), ordered);
+  });
+});
