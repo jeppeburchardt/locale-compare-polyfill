@@ -1,6 +1,6 @@
 {
   "name": "locale-compare-polyfill",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "polyfill for String.localeCompare",
   "main": "src/locale-compare.js",
   "scripts": {
