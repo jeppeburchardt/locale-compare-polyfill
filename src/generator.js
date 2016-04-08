@@ -10,11 +10,23 @@ var ARMENIAN = [0x0530, 0x058F];
 var HEBREW = [0x0590, 0x05FF];
 var ARABIC = [0x0600, 0x06FF];
 
-var locales = {
-  da: [BASIC_LATIN, LATIN_1],
-  nb: [BASIC_LATIN, LATIN_1],
-  se: [BASIC_LATIN, LATIN_1],
-  fi: [BASIC_LATIN, LATIN_1],
-  de: [BASIC_LATIN, LATIN_1],
-  en: [BASIC_LATIN],
-};
+var locales = [
+  {lang:'da', set: [BASIC_LATIN, LATIN_1]},
+  {lang:'nb', set: [BASIC_LATIN, LATIN_1]},
+  {lang:'se', set: [BASIC_LATIN, LATIN_1]},
+  {lang:'fi', set: [BASIC_LATIN, LATIN_1]},
+  {lang:'de', set: [BASIC_LATIN, LATIN_1]},
+  {lang:'en', set: [BASIC_LATIN]},
+];
+
+var characterMaps = locales.map(locale => ({
+  'map': locale.set.reduce((obj, range) => {
+    for (let i = range[0]; i <= range[1]; i++) {
+      obj.push(String.fromCharCode(i));
+    }
+    return obj;
+  }, []).sort((a, b) => (a.localeCompare(b, locale.lang))).join(''),
+  'lang': locale.lang,
+}));
+
+characterMaps.forEach(map => console.log(map.lang + ': ' + map.map));
