@@ -14,6 +14,9 @@ describe('da-DK', function() {
   it('should order ø after p', function() {
     assert('ø'.localeCompare('p', 'da-DK') === 1);
   });
+  it('should order deep strings', function() {
+    assert('bbbbc'.localeCompare('bbbba', 'da-DK') === 1);
+  });
   it('should order an array', function() {
     var unordered = ['ø', 'å', 'z', 'æ'];
     var ordered = ['z', 'æ', 'ø', 'å'];
