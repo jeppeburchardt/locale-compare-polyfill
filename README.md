@@ -12,6 +12,7 @@ Currently only supports:
 - Hungarian
 - Norwegian
 - Swedish
+
 but more locales can easily be generated (take a look at src/generator.js).
 
 ## install
