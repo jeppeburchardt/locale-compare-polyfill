@@ -11,6 +11,7 @@ var HEBREW = [0x0590, 0x05FF];
 var ARABIC = [0x0600, 0x06FF];
 
 var locales = [
+  {lang:'hu', set: [BASIC_LATIN, LATIN_1, LATIN_EXTENDED_A]},
   {lang:'da', set: [BASIC_LATIN, LATIN_1]},
   {lang:'nb', set: [BASIC_LATIN, LATIN_1]},
   {lang:'se', set: [BASIC_LATIN, LATIN_1]},

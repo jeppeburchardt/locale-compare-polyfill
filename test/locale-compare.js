@@ -25,3 +25,19 @@ describe('da-DK', function() {
     }), ordered);
   });
 });
+
+describe('hu-HU', function() {
+  it('should order á after a', function() {
+    assert('á'.localeCompare('a', 'hu-HU') === 1);
+  });
+  it('should order deep strings', function() {
+    assert('aaaaaé'.localeCompare('aaaaae', 'hu-HU') === 1);
+  });
+  it('should order an array', function() {
+    var unordered = ['ő', 'a', 't', 'é'];
+    var ordered = ['a', 'é', 'ő', 't'];
+    assert.deepStrictEqual(unordered.sort(function(a, b) {
+      return a.localeCompare(b, 'hu-HU');
+    }), ordered);
+  });
+});
