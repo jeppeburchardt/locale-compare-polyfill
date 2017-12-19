@@ -14,17 +14,32 @@
       'en': ' _-,;:!?.\'"()[]{}@*/\&#%`^+<=>|~$0123456789aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ'
     };
 
+	var processorMap = {
+		'da': function(input) {
+			return (input || '')
+				.replace(/aa/g, 'å')
+				.replace(/A[Aa]/g, 'Å');
+		},
+		'noOp': function(input) {
+			return input;
+		}
+	}
+
     var original = String.prototype.localeCompare;
 
     String.prototype.localeCompare = function(other, locale) {
       if (!locale) { return original.apply(this, arguments); }
       var lang = locale.split('-')[0];
       var map = characterMaps[lang];
+	  var processor = processorMap[lang] || processorMap.noOp;
+
+      var selfProcessed = processor(this.toString());
+	  var otherProcessed = processor(other);
 
       var charA = null, charB = null, index = 0;
       while (charA === charB && index < 100) {
-        charA = this.toString()[index];
-        charB = other[index];
+        charA = selfProcessed[index];
+        charB = otherProcessed[index];
         index++;
       }
       return Math.max(-1, Math.min(1, map.indexOf(charA) - map.indexOf(charB)));
